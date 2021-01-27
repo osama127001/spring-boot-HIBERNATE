@@ -6,6 +6,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 public class StudentDao {
 
@@ -38,15 +41,16 @@ public class StudentDao {
         }
     }
 
+
     /*
-    * SELECT * FROM student WHERE id = givenId
+    * SELECT * FROM student WHERE id = givenId;
     */
-    public void selectStudentById() {
+    public void selectStudentById(int id) {
         Session session = factory.getCurrentSession();
         try {
             System.out.println("Retrieving Student..... ");
             session.beginTransaction();
-            Student result = session.get(Student.class, 2);
+            Student result = session.get(Student.class, id);
             System.out.println(result.toString());
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -55,5 +59,71 @@ public class StudentDao {
             session.close();
         }
     }
+
+
+    /*
+    * SELECT * FROM student
+    */
+    public void selectAllFromStudent() {
+        Session session = factory.getCurrentSession();
+        try {
+            session.beginTransaction();
+            List<Student> students = session.createQuery("from Student", Student.class).getResultList();
+            for (Student student : students) {
+                System.out.println(student.toString());
+            }
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            session.close();
+        }
+    }
+
+
+    /*
+     * SELECT * FROM student WHERE last_name="Khan";
+     */
+    public void selectAllFromStudentWhereLastName(String lastName) {
+        Session session = factory.getCurrentSession();
+        try {
+            session.beginTransaction();
+            List<Student> students = session.createQuery("from Student s WHERE s.lastName=:lName", Student.class)
+                    .setParameter("lName", lastName)
+                    .getResultList();
+            for (Student student : students) {
+                System.out.println(student.toString());
+            }
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            session.close();
+        }
+    }
+
+
+    /*
+     * SELECT * FROM student WHERE last_name="Khan" AND email LIKE %student.com ;
+     */
+    public void selectAllFromStudentWhereLastNameAndEmail(String lastName) {
+        Session session = factory.getCurrentSession();
+        try {
+            session.beginTransaction();
+            List<Student> students = session.createQuery("from Student s WHERE s.lastName=:lName OR s.email LIKE '%student.com'", Student.class)
+                    .setParameter("lName", lastName)
+                    .getResultList();
+            for (Student student : students) {
+                System.out.println(student.toString());
+            }
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            session.close();
+        }
+    }
+
+
 
 }

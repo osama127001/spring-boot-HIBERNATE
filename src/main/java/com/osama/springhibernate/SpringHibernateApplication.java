@@ -15,8 +15,13 @@ public class SpringHibernateApplication {
 		SpringApplication.run(SpringHibernateApplication.class, args);
 
 		StudentDao studentDao = new StudentDao();
-		studentDao.createStudent();
-		studentDao.selectStudentById();
+		// studentDao.createStudent();
+		// studentDao.selectStudentById(2);
+		studentDao.selectAllFromStudent();
+		studentDao.selectAllFromStudentWhereLastName("Khan");
+		studentDao.selectAllFromStudentWhereLastNameAndEmail("Khan");
+
+
 	}
 
 }
