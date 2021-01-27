@@ -20,7 +20,8 @@ public class SpringHibernateApplication {
 		studentDao.selectAllFromStudent();
 		studentDao.selectAllFromStudentWhereLastName("Khan");
 		studentDao.selectAllFromStudentWhereLastNameAndEmail("Khan");
-
+		studentDao.updateEmailSetEmailWhereId(3, "dd@student.com");
+		studentDao.updateEmailSetEmail("test@gmail.com");
 
 	}
 

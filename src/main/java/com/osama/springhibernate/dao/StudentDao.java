@@ -23,7 +23,7 @@ public class StudentDao {
 
 
     /*
-    * Add Student in table Student
+    * INSERT Student in table Student
     */
     public void createStudent() {
         Session session = factory.getCurrentSession();
@@ -110,7 +110,8 @@ public class StudentDao {
         Session session = factory.getCurrentSession();
         try {
             session.beginTransaction();
-            List<Student> students = session.createQuery("from Student s WHERE s.lastName=:lName OR s.email LIKE '%student.com'", Student.class)
+            List<Student> students = session
+                    .createQuery("from Student s WHERE s.lastName=:lName OR s.email LIKE '%student.com'", Student.class)
                     .setParameter("lName", lastName)
                     .getResultList();
             for (Student student : students) {
@@ -124,6 +125,24 @@ public class StudentDao {
         }
     }
 
+
+    /*
+    * UPDATE student SET email = givenEmail WHERE id = givenId
+    */
+    public void updateEmailSetEmailWhereId(int id, String email) {
+        Session session = factory.getCurrentSession();
+        try {
+            session.beginTransaction();
+            Student student = session.get(Student.class, id);
+            student.setEmail(email);
+            session.getTransaction().commit();
+            System.out.println("Student Updated!");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            session.close();
+        }
+    }
 
 
 }
