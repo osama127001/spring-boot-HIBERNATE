@@ -1,5 +1,6 @@
 package com.osama.springhibernate;
 
+import com.osama.springhibernate.dao.StudentDao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -13,19 +14,8 @@ public class SpringHibernateApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringHibernateApplication.class, args);
 
-		/*
-		* Database: MySQL
-		* Testing Database Connection
-		*/
-		String userName = "dbadmin";
-		String password = "admin";
-		String jdbcUrl = "jdbc:mysql://localhost:3306/testdb";
-		try {
-			System.out.println("Connecting to database");
-			Connection con = DriverManager.getConnection(jdbcUrl, userName, password);
-			System.out.println("Connection Successful");
-		} catch (Exception exception) {
-			exception.printStackTrace();
-		}
+		StudentDao studentDao = new StudentDao();
+		studentDao.createStudent();
 	}
+
 }
