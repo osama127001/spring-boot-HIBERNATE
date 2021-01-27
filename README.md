@@ -65,6 +65,10 @@ Annotations | Description
 
       SHOW GRANTS FOR 'dbadmin'@'localhost';
 
+* Set auto increment in MySQL and just pass the values of all columns except PK, it will automatically increment PK.
+  
+      ALTER TABLE student MODIFY id int NOT NULL AUTO_INCREMENT;
+
 </details>
 
 [comment]: <> (Testing Database Connection)
@@ -117,3 +121,4 @@ Make sure to add `@SpringBootApplication(exclude = {DataSourceAutoConfiguration.
 * `Session objects` develops connection with the database, and we use that object again and again.
 
 </details>
+

@@ -4,7 +4,9 @@ import com.osama.springhibernate.model.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class StudentDao {
 
     /*
@@ -27,7 +29,7 @@ public class StudentDao {
     public void createStudent() {
         try {
             System.out.println("Creating student object .....");
-            Student student = new Student("Aamir", "Hanif", "aamir@student.com");
+            Student student = new Student("Osama", "Khan", "osama@student.com");
             session.beginTransaction();
             session.save(student);
             session.getTransaction().commit();
