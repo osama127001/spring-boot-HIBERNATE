@@ -18,18 +18,15 @@ public class StudentDao {
             .addAnnotatedClass(Student.class)
             .buildSessionFactory();
 
-    /*
-    *retrieving current session
-    */
-    Session session = factory.getCurrentSession();
 
     /*
     * Add Student in table Student
     */
     public void createStudent() {
+        Session session = factory.getCurrentSession();
         try {
             System.out.println("Creating student object .....");
-            Student student = new Student("Osama", "Khan", "osama@student.com");
+            Student student = new Student("Awais", "Khan", "awais@student.com");
             session.beginTransaction();
             session.save(student);
             session.getTransaction().commit();
@@ -37,7 +34,25 @@ public class StudentDao {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
-            factory.close();
+            session.close();
+        }
+    }
+
+    /*
+    * SELECT * FROM student WHERE id = givenId
+    */
+    public void selectStudentById() {
+        Session session = factory.getCurrentSession();
+        try {
+            System.out.println("Retrieving Student..... ");
+            session.beginTransaction();
+            Student result = session.get(Student.class, 2);
+            System.out.println(result.toString());
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            session.close();
         }
     }
 

@@ -16,6 +16,7 @@ public class SpringHibernateApplication {
 
 		StudentDao studentDao = new StudentDao();
 		studentDao.createStudent();
+		studentDao.selectStudentById();
 	}
 
 }
