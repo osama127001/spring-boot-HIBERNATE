@@ -4,11 +4,15 @@
 </h1>
 
 <p align="center">
-    Hibernate ORM is an object-relational mapping tool for the Java programming language. It provides a framework for mapping an object-oriented domain model to a relational database.
+    Hibernate ORM (Object-Relational Mapping) is an object-relational mapping tool for the Java programming language. It provides a framework for mapping an object-oriented domain model to a relational database.
 </p>
 
 
 ## Hibernate Annotations
+
+`NOTE`
+* The Persistence tab in IntelliJ will show the database tables/entities that we created using hibernate/persistence.
+* Make sure to import all the annotations from `javax.persistence`.
 
 Annotations | Description
 ---| ---| 
@@ -18,6 +22,7 @@ Annotations | Description
 `@Column` | Shows that the field is the column of the database.
 
 
+## Coding Concepts / Snippets
 <details>
 <summary>Testing Database Connection</summary>
 
