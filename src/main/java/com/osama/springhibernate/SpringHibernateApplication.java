@@ -27,8 +27,5 @@ public class SpringHibernateApplication {
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}
-
-
 	}
-
 }
