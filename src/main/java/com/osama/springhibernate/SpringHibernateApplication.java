@@ -17,11 +17,11 @@ public class SpringHibernateApplication {
 		StudentDao studentDao = new StudentDao();
 		// studentDao.createStudent();
 		// studentDao.selectStudentById(2);
-		studentDao.selectAllFromStudent();
-		studentDao.selectAllFromStudentWhereLastName("Khan");
-		studentDao.selectAllFromStudentWhereLastNameAndEmail("Khan");
-		studentDao.updateEmailSetEmailWhereId(3, "dd@student.com");
-		studentDao.updateEmailSetEmail("test@gmail.com");
+		// studentDao.selectAllFromStudent();
+		// studentDao.selectAllFromStudentWhereLastName("Khan");
+		// studentDao.selectAllFromStudentWhereLastNameAndEmail("Khan");
+		// studentDao.updateEmailSetEmailWhereId(3, "dd@student.com");
+		studentDao.deleteFromStudentWhereId(4);
 
 	}
 

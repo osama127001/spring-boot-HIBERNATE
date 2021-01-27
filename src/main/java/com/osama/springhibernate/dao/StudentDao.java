@@ -145,4 +145,26 @@ public class StudentDao {
     }
 
 
+    /*
+     * DELETE FROM student WHERE id = givenId
+     */
+    public void deleteFromStudentWhereId(int id) {
+        Session session = factory.getCurrentSession();
+        try {
+            session.beginTransaction();
+            // Student student = session.get(Student.class, id);  <-- This method also works, and it works with update also
+            // session.delete(student);    <_____________________________ |
+            session.createQuery("DELETE FROM Student WHERE id=:givenId")
+                    .setParameter("givenId", id)
+                    .executeUpdate();
+            session.getTransaction().commit();
+            System.out.println("Student Deleted!");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            session.close();
+        }
+    }
+
+
 }
