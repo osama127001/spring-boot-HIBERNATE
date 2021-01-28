@@ -69,6 +69,14 @@ Annotations | Description
   
       ALTER TABLE student MODIFY id int NOT NULL AUTO_INCREMENT;
 
+* To check index(Constraints details) of a table, use the following command:
+
+      SELECT INDEX FROM table_name;
+
+* Run the following command to execute a file script:
+
+      SOURCE c:/users/khannosa/Desktop/spring-hibernate/assets/hb-01-one-to-one-uni/create-db.sql
+
 </details>
 
 [comment]: <> (Testing Database Connection)

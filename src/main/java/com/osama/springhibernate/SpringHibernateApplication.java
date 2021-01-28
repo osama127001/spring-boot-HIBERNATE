@@ -14,14 +14,12 @@ public class SpringHibernateApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringHibernateApplication.class, args);
 
-		StudentDao studentDao = new StudentDao();
-		// studentDao.createStudent();
-		// studentDao.selectStudentById(2);
-		// studentDao.selectAllFromStudent();
-		// studentDao.selectAllFromStudentWhereLastName("Khan");
-		// studentDao.selectAllFromStudentWhereLastNameAndEmail("Khan");
-		// studentDao.updateEmailSetEmailWhereId(3, "dd@student.com");
-		studentDao.deleteFromStudentWhereId(4);
+		try {
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/instructor_example?useSSL=false", "root", "admin");
+			System.out.println("Connection Successful!");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 
 	}
 

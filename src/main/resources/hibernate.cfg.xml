@@ -8,8 +8,8 @@
 
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/testdb?useSSL=false</property>
-        <property name="connection.username">dbadmin</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/instructor_example?useSSL=false</property>
+        <property name="connection.username">root</property>
         <property name="connection.password">admin</property>
 
         <!-- JDBC connection pool settings ... using built-in test pool -->
