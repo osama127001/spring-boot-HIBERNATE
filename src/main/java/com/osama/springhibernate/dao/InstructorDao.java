@@ -68,5 +68,28 @@ public class InstructorDao {
         }
     }
 
+    /*
+     * GET: Getting Instructor from instructor_detail.
+     * Testing bidirectional relationship.
+     */
+    public void getInstructor(int id) {
+        Session session = factory.getCurrentSession();
+        try {
+            // Getting InstructorDetail
+            session.beginTransaction();
+            InstructorDetail tempInstructorDetail = session.get(InstructorDetail.class, id);
+            System.out.println("InstructorDetail: " + tempInstructorDetail);
+
+            // Getting Instructor from InstructorDetail
+            Instructor tempInstructor = tempInstructorDetail.getInstructor();
+            System.out.println("Instructor form InstructorDetail: " + tempInstructor);
+            session.getTransaction().commit();
+            System.out.println("Instructor Displayed!");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            session.close();
+        }
+    }
 
 }

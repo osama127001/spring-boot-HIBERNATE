@@ -26,7 +26,8 @@ public class SpringHibernateApplication {
 		InstructorDao iDao = new InstructorDao();
 //		iDao.createInstructor("Hadi", "Khan", "hadi@gmail.com", "http://hadi.com", "Movie Geek");
 //		iDao.createInstructor("Aamir", "Hanif", "aamir@gmail.com", "http://aamir.com", "Cricket");
-		iDao.deleteInstructor(1);
+//		iDao.deleteInstructor(1);
+		iDao.getInstructor(2);
 	}
 
 }

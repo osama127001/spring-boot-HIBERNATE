@@ -18,11 +18,28 @@ public class InstructorDetail implements Serializable {
     @Column(name = "hobby")
     private String hobby;
 
+    /*
+    * 1. By adding the below property, we are making the relationship b/w instructor and instructor_detail
+    *    bidirectional.
+    * 2. mappedBy tells the Instructor class that look for 'instructorDetail' property.
+    * 3. We need to make no changes in the DB to make the relationship bidirectional.
+    */
+    @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+    private Instructor instructor;
+
     public InstructorDetail() {}
 
     public InstructorDetail(String youtubeChannel, String hobby) {
         this.youtubeChannel = youtubeChannel;
         this.hobby = hobby;
+    }
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
     }
 
     public int getId() {
