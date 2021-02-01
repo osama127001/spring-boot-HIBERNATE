@@ -21,6 +21,9 @@ Annotations | Description
 `@Id` | Marks the field as an ID-Column of the table.
 `@Column` | Shows that the field is the column of the database.
 `@GeneratedValue(strategy = GenerationType.IDENTITY)` | Shows that the table is incrementing the PK itself in the DB.
+`@JoinColumn(name = "FK_id")` | Add FK in parent table.
+`@OneToOne(mappedBy = "childInstance", cascade = CascadeType.ALL)` | Make relationship bidirectional by using this in child table. mappedBy tells the Instructor class that look for 'instructorDetail' property.
+
 
 ## Coding Concepts / Snippets
 
