@@ -20,7 +20,7 @@ Annotations | Description
 `@Table(name="table-name")` | Maps the entity to table.
 `@Id` | Marks the field as an ID-Column of the table.
 `@Column` | Shows that the field is the column of the database.
-
+`@GeneratedValue(strategy = GenerationType.IDENTITY)` | Shows that the table is incrementing the PK itself in the DB.
 
 ## Coding Concepts / Snippets
 
@@ -130,3 +130,17 @@ Make sure to add `@SpringBootApplication(exclude = {DataSourceAutoConfiguration.
 
 </details>
 
+[comment]: <> (OneToOne Cascade Types)
+<details>
+<summary>OneToOne Cascade Types</summary>
+
+OneToOne Cascade Type | Description
+---| ---|
+PERSIST | if entity is persisted / saved, related entity will also be persisted. 
+REMOVE | if entity is removed / deleted, related entity will also be deleted.
+REFRESH | if entity is refreshed, related entity will also be refreshed.
+DETACH | if entity is detached (not associated with session), related entity will also be detached.
+MERGE | if entity is merged, then related entity will also be merged.
+ALL | All of the above cascade types.
+
+</details>
