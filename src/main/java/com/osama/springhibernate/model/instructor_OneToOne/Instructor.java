@@ -21,6 +21,13 @@ public class Instructor implements Serializable {
     @Column(name = "email")
     private String email;
 
+    /*
+    * Shows the FK Constraint, this table has the FK.
+    * If we want to delete instructor_detail and keep instructor than set below
+    *    cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST}, remove
+    *    CascadeType.DELETE, also in the DAO class before deleting, break the association by using
+    *    tempInstructor.getInstructorDetail().setInstructorDetail(null);
+    */
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetail instructorDetail;

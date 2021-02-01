@@ -23,6 +23,10 @@ public class InstructorDetail implements Serializable {
     *    bidirectional.
     * 2. mappedBy tells the Instructor class that look for 'instructorDetail' property.
     * 3. We need to make no changes in the DB to make the relationship bidirectional.
+    * 4. If we want to delete instructor_detail and keep instructor than set below
+    *    cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST}, remove
+    *    CascadeType.DELETE, also in the DAO class before deleting, break the association by using
+    *    tempInstructorDetail.getInstructor().setInstructorDetail(null);
     */
     @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
     private Instructor instructor;
