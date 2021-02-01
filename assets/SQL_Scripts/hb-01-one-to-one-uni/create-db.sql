@@ -1,8 +1,8 @@
 DROP SCHEMA IF EXISTS `instructor_example`;
 
-CREATE SCHEMA `instructor_example`;
+CREATE SCHEMA `example_instructor`;
 
-use `instructor_example`;
+use `example_instructor`;
 
 SET FOREIGN_KEY_CHECKS = 0;
 

@@ -1,4 +1,4 @@
-package com.osama.springhibernate.model;
+package com.osama.springhibernate.model.student;
 
 import javax.persistence.*;
 import java.io.Serializable;

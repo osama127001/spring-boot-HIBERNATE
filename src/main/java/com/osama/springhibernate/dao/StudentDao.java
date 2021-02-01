@@ -1,13 +1,12 @@
 package com.osama.springhibernate.dao;
 
-import com.osama.springhibernate.model.Student;
+import com.osama.springhibernate.model.student.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class StudentDao {
