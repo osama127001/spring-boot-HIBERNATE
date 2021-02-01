@@ -1,15 +1,14 @@
 package com.osama.springhibernate.dao;
 
-import com.osama.springhibernate.model.instructor_OneToOne.Instructor;
-import com.osama.springhibernate.model.instructor_OneToOne.InstructorDetail;
-import com.osama.springhibernate.model.student.Student;
+import com.osama.springhibernate.model.OneToMany.Instructor;
+import com.osama.springhibernate.model.OneToMany.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class InstructorDao {
+public class InstructorDao_OneToOne {
 
     /*
      * Creating Session Factory

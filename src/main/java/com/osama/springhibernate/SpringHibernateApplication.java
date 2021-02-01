@@ -1,7 +1,6 @@
 package com.osama.springhibernate;
 
-import com.osama.springhibernate.dao.InstructorDao;
-import com.osama.springhibernate.dao.StudentDao;
+import com.osama.springhibernate.dao.InstructorDao_OneToOne;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -23,11 +22,7 @@ public class SpringHibernateApplication {
 		}
 
 		// Testing Code
-		InstructorDao iDao = new InstructorDao();
-//		iDao.createInstructor("Hadi", "Khan", "hadi@gmail.com", "http://hadi.com", "Movie Geek");
-//		iDao.createInstructor("Aamir", "Hanif", "aamir@gmail.com", "http://aamir.com", "Cricket");
-//		iDao.deleteInstructor(1);
-		iDao.getInstructor(2);
+
 	}
 
 }

@@ -1,8 +1,8 @@
-DROP SCHEMA IF EXISTS `hb-03-one-to-many`;
+DROP SCHEMA IF EXISTS `example_instructor`;
 
-CREATE SCHEMA `hb-03-one-to-many`;
+CREATE SCHEMA `example_instructor`;
 
-use `hb-03-one-to-many`;
+use `example_instructor`;
 
 SET FOREIGN_KEY_CHECKS = 0;
 

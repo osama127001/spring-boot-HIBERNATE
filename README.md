@@ -147,3 +147,43 @@ MERGE | if entity is merged, then related entity will also be merged.
 ALL | All of the above cascade types.
 
 </details>
+
+[comment]: <> (OneToOne)
+<details>
+<summary>OneToOne</summary>
+
+* The Example covered here is an example of Instructor <--> InstructorDetail `Bi-Directional` and `Directional`.
+* `Can apply cascades` Instructor and InstructorDetail can `Get` and `Delete` each other.
+
+</details>
+
+[comment]: <> (OneToMany)
+<details>
+<summary>OneToMany</summary>
+
+* The Example covered here is an example of Instructor <--> Course `Bi-Directional`.
+* `Donot apply delete cascades`: Instructor and courses are not dependent.
+
+</details>
+
+[comment]: <> (OneToMany)
+<details>
+<summary>Delete from one table and keep in other table, OneToOne</summary>
+
+If we want to delete an `instructor_detail` and keep `instructor` than set
+
+    @OneToOne(mappedBy = "instructorDetail",cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST})
+    private Instructor instructor;
+
+
+Instead of:
+
+    @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+    private Instructor instructor;
+
+
+CascadeType.DELETE, also in the DAO class before deleting, break the association by using:
+    
+    tempInstructor.getInstructorDetail().setInstructorDetail(null);
+
+</details>

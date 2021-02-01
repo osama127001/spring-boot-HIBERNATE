@@ -1,4 +1,4 @@
-package com.osama.springhibernate.model.instructor_OneToOne;
+package com.osama.springhibernate.model.OneToOne;
 
 import javax.persistence.*;
 import java.io.Serializable;
