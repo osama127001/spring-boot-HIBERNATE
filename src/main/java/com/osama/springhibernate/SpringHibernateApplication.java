@@ -1,6 +1,6 @@
 package com.osama.springhibernate;
 
-import com.osama.springhibernate.dao.InstructorDao_OneToOne;
+import com.osama.springhibernate.dao.OneToManyDao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -22,7 +22,11 @@ public class SpringHibernateApplication {
 		}
 
 		// Testing Code
-
+		OneToManyDao ODao = new OneToManyDao();
+//		ODao.createInstructor("Fahad", "Raza", "fraza@gmail.com", "http:youtube.com", "BBQing");
+//		ODao.createInstructor("Aamir", "Sohail", "asohail@gmail.com", "http:youtube.com", "Reading");
+//		ODao.createCourse(2, "NodeJS Guide");
+		ODao.getCoursesOfAnInstructor(2);
 	}
 
 }
