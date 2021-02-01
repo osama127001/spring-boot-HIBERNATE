@@ -187,3 +187,40 @@ CascadeType.DELETE, also in the DAO class before deleting, break the association
     tempInstructor.getInstructorDetail().setInstructorDetail(null);
 
 </details>
+
+[comment]: <> (Lazy Load vs Eager Load)
+<details>
+<summary>Lazy Loading vs Eager Loading</summary>
+
+* Default fetch types for mapping are given below:
+
+Mapping | Default Fetch Type
+---| ---|
+OneToOne | FetchType.EAGER
+OneToMany | FetchType.LAZY
+ManyToOne | FetchType.EAGER
+ManyToMany | FetchType.LAZY
+
+* `Note` You need to have an open session in order to Lazy Load the data.
+
+* Two main ways of lazy loading the data:
+  * `session.get` and call the appropriate getter method.
+  * `HQL`, Hibernate Query language
+
+* If we have teacher and courses, `one-to-one` relation, and we load some data from the courses tables, 
+and the fetch type is set to Eager loading, then it will also load the data from teacher table.
+
+* The Following code shows the setting of the fetch type:
+
+      @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+      @JoinColumn(name = "instructor_id")
+      private Instructor instructor;
+
+The Following tables shows the differences b/w eager and lazy loading:
+
+
+Lazy Loading | Eager Loading
+---| ---|
+Load the main entity first, and loads dependent entities on demand | Loads everything
+Loads names of students | Loads all the student objects
+</details>
