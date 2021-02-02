@@ -23,6 +23,28 @@ Annotations | Description
 `@GeneratedValue(strategy = GenerationType.IDENTITY)` | Shows that the table is incrementing the PK itself in the DB.
 `@JoinColumn(name = "FK_id")` | Add FK in parent table.
 `@OneToOne(mappedBy = "childInstance", cascade = CascadeType.ALL)` | Make relationship bidirectional by using this in child table. mappedBy tells the Instructor class that look for 'instructorDetail' property.
+`@OneToMany` OR `@ManyToOne` | To enable OneToMany relationship 
+`@ManyToMany` | To enable ManyToMany relationship 
+
+
+## Types of Mappings
+Mainly, 4 types of relationships can be established b/w tables in an ERD.
+
+Mapping Type | Description
+---| ---|
+OneToOne | Eg: Instructor --> Instructor detail
+OneToMany | Eg: Instructor --> Courses (This can be many to many, but just assume)
+ManyToMany | Eg: Student --> Course
+ManyToOne | Same as OneToMany, but used from the child to enable bidirectional relationship.
+
+## Types of Directions
+2 Directions: 
+
+Direction | Description
+---| ---|
+Uni-Directional | Just load the parent table (table with FK), and load the instances of child table from it.
+Bi-Directional | Can load both tables, and can get the instance of eachother from both the tables.
+
 
 
 ## Coding Concepts / Snippets
@@ -133,9 +155,9 @@ Make sure to add `@SpringBootApplication(exclude = {DataSourceAutoConfiguration.
 
 </details>
 
-[comment]: <> (OneToOne Cascade Types)
+[comment]: <> (Cascade Types)
 <details>
-<summary>OneToOne Cascade Types</summary>
+<summary>Cascade Types</summary>
 
 OneToOne Cascade Type | Description
 ---| ---|
