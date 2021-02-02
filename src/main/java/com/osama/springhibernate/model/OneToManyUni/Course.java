@@ -1,4 +1,4 @@
-package com.osama.springhibernate.model.OneToMany;
+package com.osama.springhibernate.model.OneToManyUni;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,6 +18,7 @@ public class Course implements Serializable {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
+
 
     public Course() {
     }

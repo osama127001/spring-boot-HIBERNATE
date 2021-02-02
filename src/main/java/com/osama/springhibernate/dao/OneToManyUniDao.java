@@ -1,18 +1,17 @@
 package com.osama.springhibernate.dao;
 
-import com.osama.springhibernate.model.OneToMany.Course;
-import com.osama.springhibernate.model.OneToMany.Instructor;
-import com.osama.springhibernate.model.OneToMany.InstructorDetail;
+import com.osama.springhibernate.model.OneToManyBi.Course;
+import com.osama.springhibernate.model.OneToManyBi.Instructor;
+import com.osama.springhibernate.model.OneToManyBi.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class OneToManyDao {
+public class OneToManyUniDao {
 
     /*
      * Creating Session Factory

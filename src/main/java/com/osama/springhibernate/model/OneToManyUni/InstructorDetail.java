@@ -1,4 +1,4 @@
-package com.osama.springhibernate.model.OneToMany;
+package com.osama.springhibernate.model.OneToManyUni;
 
 import javax.persistence.*;
 import java.io.Serializable;
