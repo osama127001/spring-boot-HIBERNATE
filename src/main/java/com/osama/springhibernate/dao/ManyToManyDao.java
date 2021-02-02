@@ -6,6 +6,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class ManyToManyDao {
 
@@ -57,5 +59,44 @@ public class ManyToManyDao {
             session.close();
         }
     }
+
+    /*
+     * GET: Get courses of a student.
+     */
+    public void getCoursesForStudent(int studentId) {
+        Session session = factory.getCurrentSession();
+        try {
+            session.beginTransaction();
+            List<Course> courses = session.get(Student.class, studentId).getCourses();
+            System.out.println("Student has courses: ");
+            for (Course c : courses) {
+                System.out.println(c.getTitle());
+            }
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            session.close();
+        }
+    }
+
+    /*
+     * DELETE: delete a course, not its associated students.
+     */
+    public void deleteCourseNotStudent(int courseId) {
+        Session session = factory.getCurrentSession();
+        try {
+            session.beginTransaction();
+            session.delete(session.get(Course.class, courseId));
+            System.out.println("Course Deleted");
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            session.close();
+        }
+    }
+
+
 
 }

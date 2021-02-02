@@ -25,7 +25,7 @@ public class SpringHibernateApplication {
 
 		// Testing Code
 		ManyToManyDao dao = new ManyToManyDao();
-		dao.crateCourseAndAddStudents();
+		dao.deleteCourseNotStudent(11);
 
 	}
 
