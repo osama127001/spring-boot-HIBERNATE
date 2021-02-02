@@ -162,7 +162,9 @@ ALL | All of the above cascade types.
 <summary>OneToMany</summary>
 
 * The Example covered here is an example of Instructor <--> Course `Bi-Directional`.
+* The Example covered here is an example of Course <--> Reviews `Uni-Directional`.
 * `Donot apply delete cascades`: Instructor and courses are not dependent.
+
 
 </details>
 
@@ -207,8 +209,15 @@ ManyToMany | FetchType.LAZY
   * `session.get` and call the appropriate getter method.
   * `HQL`, Hibernate Query language
 
+        // Lazy Loading using HQL
+        // Loading Everything we need when the session is opened!
+        // Import from import org.hibernate.query.Query;
+        Query<Instructor> query = session
+                .createQuery("SELECT i FROM Instructor i JOIN FETCH i.courses where i.id=:instructorId", Instructor.class);
+
+
 * If we have teacher and courses, `one-to-one` relation, and we load some data from the courses tables, 
-and the fetch type is set to Eager loading, then it will also load the data from teacher table.
+and the fetch type is set to Eager loading, then it will also load the data from teacher table as well.
 
 * The Following code shows the setting of the fetch type:
 
