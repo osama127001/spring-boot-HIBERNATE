@@ -1,8 +1,8 @@
-DROP SCHEMA IF EXISTS `example_instructor`;
+DROP SCHEMA IF EXISTS `schema_student_course`;
 
-CREATE SCHEMA `example_instructor`;
+CREATE SCHEMA `schema_student_course`;
 
-use `example_instructor`;
+use `schema_student_course`;
 
 SET FOREIGN_KEY_CHECKS = 0;
 

@@ -1,5 +1,6 @@
 package com.osama.springhibernate;
 
+import com.osama.springhibernate.dao.ManyToManyDao;
 import com.osama.springhibernate.dao.OneToManyUniDao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,14 +17,15 @@ public class SpringHibernateApplication {
 		SpringApplication.run(SpringHibernateApplication.class, args);
 
 		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/example_instructor?useSSL=false", "root", "admin");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/schema_student_course?useSSL=false", "root", "admin");
 			System.out.println("Connection Successful!");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 
 		// Testing Code
-
+		ManyToManyDao dao = new ManyToManyDao();
+		dao.crateCourseAndAddStudents();
 
 	}
 
