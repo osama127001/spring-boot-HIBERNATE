@@ -23,9 +23,8 @@ public class SpringHibernateApplication {
 		}
 
 		// Testing Code
-		OneToManyUniDao dao = new OneToManyUniDao();
-		// dao.createCourseAndAddReviews();
-		dao.getCourseAndReviews(10);
+
+
 	}
 
 }

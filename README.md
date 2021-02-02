@@ -7,6 +7,10 @@
     Hibernate ORM (Object-Relational Mapping) is an object-relational mapping tool for the Java programming language. It provides a framework for mapping an object-oriented domain model to a relational database.
 </p>
 
+## Example ERD
+Following ERD is used in the given example.
+
+![ERD of example used](assets/Images/erd.PNG)
 
 ## Hibernate Annotations
 
@@ -190,7 +194,7 @@ ALL | All of the above cascade types.
 
 </details>
 
-[comment]: <> (OneToMany)
+[comment]: <> (Delete)
 <details>
 <summary>Delete from one table and keep in other table, OneToOne</summary>
 
@@ -209,6 +213,44 @@ Instead of:
 CascadeType.DELETE, also in the DAO class before deleting, break the association by using:
     
     tempInstructor.getInstructorDetail().setInstructorDetail(null);
+
+</details>
+
+[comment]: <> (Many To Many)
+<details>
+<summary>ManyToMany</summary>
+
+* `Join Table` A table that provides the mapping for the 2 tables. it has FK's of both the tables.
+* `Do not apply cascades`, deleting student will not delete the course.
+* The below image shows how man to many mappings work.
+
+![Student and course Relationship](assets/Images/std-co.PNG)
+
+`Example`
+
+* The below code shows the setup of ManyToMany mapping in Course class:
+  
+      @ManyToMany(fetch = FetchType.LAZY,
+          cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+      @JoinTable(
+          name = "course-student",
+          joinColumns = @JoinColumn(name = "course_id"),
+          inverseJoinColumns = @JoinColumn(name = "student_id")
+      )    
+      private List<Student> students;
+
+
+* The below code shows the setup of ManyToMany mapping in Student class:
+
+      @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+      @JoinTable(
+            name = "course-student",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+      )
+      private List<Course> courses;
+
 
 </details>
 
@@ -264,3 +306,4 @@ Loads names of students | Loads all the student objects
 
 
 </details>
+
