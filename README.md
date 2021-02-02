@@ -255,3 +255,12 @@ Lazy Loading | Eager Loading
 Load the main entity first, and loads dependent entities on demand | Loads everything
 Loads names of students | Loads all the student objects
 </details>
+
+[comment]: <> (Tips)
+<details>
+<summary>Tips</summary>
+
+* The Many side of the Relationship has the FK and uses `@JoinColumn` annotation
+
+
+</details>

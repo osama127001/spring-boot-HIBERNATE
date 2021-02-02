@@ -1,8 +1,9 @@
 package com.osama.springhibernate.dao;
 
-import com.osama.springhibernate.model.OneToManyBi.Course;
-import com.osama.springhibernate.model.OneToManyBi.Instructor;
-import com.osama.springhibernate.model.OneToManyBi.InstructorDetail;
+import com.osama.springhibernate.model.OneToManyUni.Course;
+import com.osama.springhibernate.model.OneToManyUni.Instructor;
+import com.osama.springhibernate.model.OneToManyUni.InstructorDetail;
+import com.osama.springhibernate.model.OneToManyUni.Review;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -22,52 +23,27 @@ public class OneToManyUniDao {
             .addAnnotatedClass(Instructor.class)
             .addAnnotatedClass(InstructorDetail.class)
             .addAnnotatedClass(Course.class)
+            .addAnnotatedClass(Review.class)
             .buildSessionFactory();
 
 
     /*
-     * INSERT: Inserting in instructor and instructor_detail.
+     * INSERT: Insert course with some reviews.
      */
-    public void createInstructor(String firstName, String lastName, String email, String ytChannel, String hobby) {
+    public void createCourseAndAddReviews() {
         Session session = factory.getCurrentSession();
         try {
             // Creating Objects
-            Instructor tempInstructor = new Instructor(firstName, lastName, email);
-            InstructorDetail tempInstructorDetail = new InstructorDetail(ytChannel, hobby);
-            tempInstructor.setInstructorDetail(tempInstructorDetail);
+            Course course = new Course("MEAN Course Guide");
+            course.addReview(new Review("Good One"));
+            course.addReview(new Review("Nice One"));
+            course.addReview(new Review("Wow"));
 
             // Initiating Transaction
             session.beginTransaction();
-            session.save(tempInstructor);
+            session.save(course);
             session.getTransaction().commit();
-            System.out.println("Instructor Created!");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        } finally {
-            session.close();
-        }
-    }
-
-
-    /*
-    * INSERT: Create and insert courses in instructor and tables
-    */
-    public void createCourse(int id, String courseName) {
-        Session session = factory.getCurrentSession();
-        try {
-            // Creating Courses
-            Course tempCourse1 = new Course(courseName);
-            Course tempCourse2 = new Course("MEAN Stack Guide");
-
-            // Initiating Transaction
-            session.beginTransaction();
-            Instructor tempInstructor = session.get(Instructor.class, id);
-            tempInstructor.add(tempCourse1);
-            tempInstructor.add(tempCourse2);
-            session.save(tempCourse1);
-            session.save(tempCourse2);
-            session.getTransaction().commit();
-            System.out.println("Instructor Created!");
+            System.out.println("Course Created and reviews added!");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
@@ -76,26 +52,27 @@ public class OneToManyUniDao {
     }
 
     /*
-     * INSERT: Inserting in instructor and instructor_detail.
+     * GET: Get course and its reviews from the DB.
      */
-    public void getCoursesOfAnInstructor(int instructorId) {
+    public void getCourseAndReviews(int courseId) {
         Session session = factory.getCurrentSession();
         try {
-            // Initiating Transaction
+            // Getting Course
             session.beginTransaction();
-            Instructor tempInstructor = session.get(Instructor.class, instructorId);
-            System.out.println(tempInstructor.getFirstName() + tempInstructor.getLastName() + "has courses");
-            List<Course> courses = tempInstructor.getCourses();
-            for (Course c : courses) {
-                System.out.println(c.getTitle());
+            Course tempCourse = session.get(Course.class, courseId);
+            List<Review> reviews = tempCourse.getReviews();
+            System.out.println(tempCourse.getTitle() + " has " + reviews.size() + " reviews: ");
+            for (Review r : reviews) {
+                System.out.println(r.getComment());
             }
             session.getTransaction().commit();
-            System.out.println("Instructor retrieved!");
+            System.out.println("Course Created and reviews added!");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
             session.close();
         }
     }
+
 
 }
